@@ -106,7 +106,7 @@ set timeoutlen=1000
 set ttimeoutlen=50
 set foldenable
 " set foldmethod=syntax "indent, marker, manual
-set modelines=1
+set modelines=2
 " set autocomplete, show unfinished commands
 set wildmode=longest,list,full
 set wildmenu
