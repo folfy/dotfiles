@@ -19,12 +19,16 @@ if ! noload
 	if empty(glob('~/.vim/autoload/plug.vim'))
 		" required to also work inside thales-network
 		silent !mkdir -p ~/.vim/autoload ~/.vim/vim-plug
+		silent !mkdir ~/.vim/undo ~/.vim/backup/ ~/.vim/swap
 		silent !git clone --depth=1
 			\ https://github.com/junegunn/vim-plug.git ~/.vim/vim-plug
 		silent !cp ~/.vim/vim-plug/plug.vim ~/.vim/autoload
 		silent !rm -rf ~/.vim/vim-plug/plug.vim
 		" silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 		" \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		qall!
+	endif
+	if empty(glob('~/.vim/plugged'))
 		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 	endif
 
@@ -68,7 +72,6 @@ if ! noload
 	Plug 'tmux-plugins/vim-tmux-focus-events'
 	Plug 'ntpeters/vim-better-whitespace'
 	call plug#end()
-
 endif
 
 " vim settings {{{1
@@ -93,7 +96,8 @@ if has('nvim')
 	tnoremap <Esc> <C-\><C-n>
 else
 	let g:pymode_python = 'python3'
-	set shellcmdflag=-ic "default to interactive shell (bashrc/aliases)
+	" seems to make problems with vim8, ubuntu in vimdiff?
+	" set shellcmdflag=-ic "default to interactive shell (bashrc/aliases)
 	set ttymouse=xterm2
 endif
 " highlight search; immediate search
