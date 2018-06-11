@@ -95,7 +95,8 @@ if has('nvim')
 	tnoremap <Esc> <C-\><C-n>
 else
 	let g:pymode_python = 'python3'
-	set shellcmdflag=-ic "default to interactive shell (bashrc/aliases)
+	" seems to make problems with vim8, ubuntu in vimdiff?
+	" set shellcmdflag=-ic "default to interactive shell (bashrc/aliases)
 	set ttymouse=xterm2
 endif
 " highlight search; immediate search
