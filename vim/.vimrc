@@ -65,6 +65,7 @@ if ! noload
 	Plug 'easymotion/vim-easymotion'
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'farmergreg/vim-lastplace'
+	Plug 'tbastos/vim-lua'
 	Plug 'tpope/vim-repeat'
 	Plug 'sbdchd/vim-shebang'
 	Plug 'roxma/vim-tmux-clipboard'
