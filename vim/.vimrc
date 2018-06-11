@@ -19,6 +19,7 @@ if ! noload
 	if empty(glob('~/.vim/autoload/plug.vim'))
 		" required to also work inside thales-network
 		silent !mkdir -p ~/.vim/autoload ~/.vim/vim-plug
+		silent !mkdir ~/.vim/undo ~/.vim/backup/ ~/.vim/swap
 		silent !git clone --depth=1
 			\ https://github.com/junegunn/vim-plug.git ~/.vim/vim-plug
 		silent !cp ~/.vim/vim-plug/plug.vim ~/.vim/autoload
@@ -70,7 +71,6 @@ if ! noload
 	Plug 'tmux-plugins/vim-tmux-focus-events'
 	Plug 'ntpeters/vim-better-whitespace'
 	call plug#end()
-
 endif
 
 " vim settings {{{1
