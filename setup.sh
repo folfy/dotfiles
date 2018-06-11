@@ -6,5 +6,5 @@ sudo <<EOF
 	usermod -a -G wireshark folfy
 
 	# utils
-	apt-get install curl
+	apt-get install curl stow
 EOF
