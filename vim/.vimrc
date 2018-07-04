@@ -42,6 +42,7 @@ if ! noload
 	Plug 'vim-scripts/CmdlineComplete'
 	Plug 'wincent/command-t'
 	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
 	Plug 'sjl/gundo.vim'
 	Plug 'tomasr/molokai'
 	Plug 'scrooloose/nerdtree', Cond(v:version >= 702, { 'on': 'NERDTreeToggle' })
@@ -110,6 +111,8 @@ set smartcase
 set timeoutlen=1000
 set ttimeoutlen=50
 set foldenable
+" background refresh interval for some plugins, etc.
+set updatetime=500
 " set foldmethod=syntax "indent, marker, manual
 set modelines=2
 " set autocomplete, show unfinished commands
