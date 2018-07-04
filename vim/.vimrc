@@ -376,8 +376,8 @@ nmap <leader>W :set wrapscan!<CR>
 nmap <leader>S :set scrollbind!<CR>
 set scrolloff=5
 nmap <leader>z :let &scrolloff=5-&scrolloff<CR>
-nmap <leader>c :FixWhitespace<CR>
-nmap <leader><C-c> :setlocal spell! spelllang=en_us<CR>
+nmap <leader>F :FixWhitespace<CR>
+nmap <leader>c :setlocal spell! spelllang=en_us<CR>
 " spellcheck - move with ]s and [s, fix z=, add zg
 nmap <leader>D :DiffSaved<CR>
 nmap <leader>d "=strftime("%d.%m.%Y")<CR>P
