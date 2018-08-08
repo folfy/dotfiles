@@ -562,6 +562,7 @@ if has('gui_running')
 		nmap <leader><M-c> :e $HOME/_vimrc<ENTER>
 		nmap <leader>C :e Z:\.vimrc<ENTER>
 	else
+		" fallback doesn't work on GTK...
 		set guifont=Hack\ 8,Monospace\ 8
 	endif
 	set guioptions=agit "remove menu+tool bar, scrollbar L+R - org. agimrLtT
