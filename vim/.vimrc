@@ -42,6 +42,7 @@ if ! noload
 	Plug 'vim-scripts/CmdlineComplete'
 	Plug 'wincent/command-t'
 	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
 	Plug 'sjl/gundo.vim'
 	Plug 'tomasr/molokai'
 	Plug 'scrooloose/nerdtree', Cond(v:version >= 702, { 'on': 'NERDTreeToggle' })
@@ -110,6 +111,8 @@ set smartcase
 set timeoutlen=1000
 set ttimeoutlen=50
 set foldenable
+" background refresh interval for some plugins, etc.
+set updatetime=500
 " set foldmethod=syntax "indent, marker, manual
 set modelines=2
 " set autocomplete, show unfinished commands
@@ -373,8 +376,8 @@ nmap <leader>W :set wrapscan!<CR>
 nmap <leader>S :set scrollbind!<CR>
 set scrolloff=5
 nmap <leader>z :let &scrolloff=5-&scrolloff<CR>
-nmap <leader>c :FixWhitespace<CR>
-nmap <leader><C-c> :setlocal spell! spelllang=en_us<CR>
+nmap <leader>F :FixWhitespace<CR>
+nmap <leader>c :setlocal spell! spelllang=en_us<CR>
 " spellcheck - move with ]s and [s, fix z=, add zg
 nmap <leader>D :DiffSaved<CR>
 nmap <leader>d "=strftime("%d.%m.%Y")<CR>P
