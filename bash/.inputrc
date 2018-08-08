@@ -1,0 +1,37 @@
+$include /etc/inputrc
+
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+# Like Tab autocomplete regardless of filename case
+set completion-ignore-case on
+# Automatically append slash to symlink pointing to dir
+set mark-symlinked-directories on
+# If there are more than 200 possible completions for a word, ask to show them all
+set completion-query-items 200
+
+# Replace first part of autocomplete if common part is longer than n
+set completion-prefix-display-length 5
+
+# Show extra file information when completing, like `ls -F` does
+set visible-stats on
+
+# # Intelligent autocomplete (consider text after cursor; req. Bash 4.?)
+set skip-completed-text on
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# set editing-mode vi
+
+# Insert Mode
+# set keymap vi-insert
+# "\e.":yank-last-arg
+# "\e_": yank-last-arg
+
+# "\e[D": backward-word
+# "\e[1;3D": backward-word
+# "\e[C": forward-word
+# "\e[1;OC": forward-word
