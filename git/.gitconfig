@@ -1,3 +1,17 @@
 [user]
 	email = folfy@users.noreply.github.com
 	name = Folfy
+
+[credential]
+	helper = store
+
+[push]
+	default = simple
+
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+
+[include]
+	path = ~/.gitconfig.work

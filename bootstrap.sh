@@ -8,6 +8,13 @@ if ! [ -d ~/.vim ]; then
 	mkdir ~/.vim
 fi
 
+if [ "$USER" == ffritzer ]; then
+	echo "Office enviroment, keeping office"
+else
+	echo "Non-office enviroment, removing office-target"
+	dirs="$(echo "$dirs" | sed "s/office//")"
+fi
+
 # verbose dry-run
 echo "Dry-run for setup to \"$target\" of dirs: "$dirs
 stow -vn -t "$target" $dirs

@@ -1,0 +1,9 @@
+[user]
+	name = ffritzer
+	email = fabian.fritzer@thalesgroup.com
+
+[http "http://github.com"]
+	proxy = http://lab-proxy.rss.d3s.at.thales:8080
+
+[http "https://github.com"]
+	proxy = http://lab-proxy.rss.d3s.at.thales:8080
