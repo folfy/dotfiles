@@ -42,7 +42,7 @@ if ! noload
 	Plug 'vim-scripts/CmdlineComplete'
 	Plug 'wincent/command-t'
 	Plug 'tpope/vim-fugitive'
-	Plug 'airblade/vim-gitgutter'
+	Plug 'airblade/vim-gitgutter', Cond(v:version >= 703)
 	Plug 'sjl/gundo.vim'
 	Plug 'tomasr/molokai'
 	Plug 'scrooloose/nerdtree', Cond(v:version >= 702, { 'on': 'NERDTreeToggle' })
@@ -57,7 +57,7 @@ if ! noload
 	Plug 'mbbill/undotree'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'vim-airline/vim-airline'
-	Plug 'benknoble/vim-auto-origami'
+	Plug 'benknoble/vim-auto-origami', Cond(exists('v:true'))
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'tpope/vim-commentary'
@@ -181,7 +181,9 @@ augroup vimrc_gen
 	" Highlight matching parenthesis
 	autocmd VimEnter * DoMatchParen
 	" auto-hide folding column
-	autocmd CursorHold,BufWinEnter * let &foldcolumn = auto_origami#Foldcolumn()
+	if exists('v:true')
+		autocmd CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+	endif
 augroup END
 
 " file specifics {{{1
