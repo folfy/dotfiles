@@ -12,7 +12,7 @@ if [ "$USER" == ffritzer ]; then
 	echo "Office enviroment, keeping office"
 else
 	echo "Non-office enviroment, removing office-target"
-	dirs="$(echo "$dirs" | sed "s/office//")"
+	dirs="$(echo "$dirs" | sed "s/office\/ \?//")"
 fi
 
 # verbose dry-run
