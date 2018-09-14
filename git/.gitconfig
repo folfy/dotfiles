@@ -17,3 +17,5 @@
 
 [include]
 	path = ~/.gitconfig.work
+[core]
+	excludefile = /homes/ffritzer/.global.gitignore

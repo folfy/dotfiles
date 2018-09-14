@@ -1,5 +1,13 @@
 #! /usr/bin/env bash
 
+if [ "$1" == "-d" ]; then
+	echo "WARNING: Delete mode"
+	mode="-D"
+else
+	#default mode (create links)
+	mode=""
+fi
+
 dirs="$(ls -d */)"
 target="$HOME"
 
@@ -17,7 +25,7 @@ fi
 
 # verbose dry-run
 echo "Dry-run for setup to \"$target\" of dirs: "$dirs
-stow -vn -t "$target" $dirs
+stow -vn $mode -t "$target" $dirs
 
 if [ $? != 0 ]; then
 	echo "There are conflicts which need to be resolved, cannot continue!"
@@ -25,4 +33,4 @@ if [ $? != 0 ]; then
 fi
 read -p "Enter to continue..."
 
-stow -v -t "$target" $dirs
+stow -v $mode -t "$target" $dirs
