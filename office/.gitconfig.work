@@ -7,3 +7,7 @@
 
 [http "https://github.com"]
 	proxy = http://lab-proxy.rss.d3s.at.thales:8080
+
+[http]
+	#sslVerify = false
+	#sslCAInfo = /homes/jdoe/atvievla9138.thales.at.crt

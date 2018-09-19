@@ -15,7 +15,8 @@
 [difftool]
 	prompt = false
 
+[core]
+	excludefile = ~/.global.gitignore
+
 [include]
 	path = ~/.gitconfig.work
-[core]
-	excludefile = /homes/ffritzer/.global.gitignore
