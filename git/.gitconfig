@@ -8,6 +8,7 @@
 [push]
 	default = simple
 	recurseSubmodules = on-demand
+	followTags = true
 
 [diff]
 	tool = vimdiff
