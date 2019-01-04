@@ -16,10 +16,11 @@ if ! [ -d ~/.vim ]; then
 	mkdir ~/.vim
 fi
 
-if [ "$USER" == ffritzer ]; then
-	echo "Office enviroment, keeping office"
+# check for office environment
+if dig atviesu0005 | grep -q "AUTHORITY: 1"; then
+	echo "Office environment, keeping office"
 else
-	echo "Non-office enviroment, removing office-target"
+	echo "Non-office environment, removing office-target"
 	dirs="$(echo "$dirs" | sed "s/office\/ \?//")"
 fi
 
@@ -28,9 +29,15 @@ echo "Dry-run for setup to \"$target\" of dirs: "$dirs
 stow -vn $mode -t "$target" $dirs
 
 if [ $? != 0 ]; then
-	echo "There are conflicts which need to be resolved, cannot continue!"
-	exit 1
+	if output=$(git status --porcelain) && [ -z "$output" ]; then
+		# Working directory clean
+		echo "There are conflicts, adopting repository - Check git status and resolve all issues afterwards!"
+	else 
+		# Uncommitted changes
+		echo "There are conflicts and the local repository is not clean, cannot continue!"
+	fi
+	
 fi
-read -p "Enter to continue..."
+read -p "Press enter to continue..."
 
 stow -v $mode -t "$target" $dirs
