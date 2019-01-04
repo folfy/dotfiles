@@ -18,9 +18,10 @@ fi
 
 # check for office environment
 if dig atviesu0005 | grep -q "AUTHORITY: 1"; then
-	echo "Office environment, keeping office"
+	echo "Office environment, removing target 'xfce-full'"
+	dirs="$(echo "$dirs" | sed "s/xfce\/ \?//")"
 else
-	echo "Non-office environment, removing office-target"
+	echo "Non-office environment, removing target 'office'"
 	dirs="$(echo "$dirs" | sed "s/office\/ \?//")"
 fi
 
