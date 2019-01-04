@@ -35,8 +35,8 @@ if [ $? != 0 ]; then
 	else 
 		# Uncommitted changes
 		echo "There are conflicts and the local repository is not clean, cannot continue!"
+		exit 1
 	fi
-	
 fi
 read -p "Press enter to continue..."
 
