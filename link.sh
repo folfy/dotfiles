@@ -33,12 +33,14 @@ if [ $? != 0 ]; then
 	if output=$(git status --porcelain) && [ -z "$output" ]; then
 		# Working directory clean
 		echo "There are conflicts, adopting repository - Check git status and resolve all issues afterwards!"
-	else 
+		modflag="--adopt"
+	else
 		# Uncommitted changes
 		echo "There are conflicts and the local repository is not clean, cannot continue!"
 		exit 1
+		modflag=""
 	fi
 fi
 read -p "Press enter to continue..."
 
-stow -v $mode -t "$target" $dirs
+stow -v $mode $modflag -t "$target" $dirs
