@@ -3,6 +3,9 @@
 if [ "$1" == "-d" ]; then
 	echo "WARNING: Delete mode"
 	mode="-D"
+elif [ "$1" == "-r" ]; then
+	echo "WARNING: Restow mode"
+	mode="-R"
 else
 	#default mode (create links)
 	mode=""
@@ -17,7 +20,7 @@ if ! [ -d ~/.vim ]; then
 fi
 
 # check for office environment
-if dig atviesu0005 | grep -q "AUTHORITY: 1"; then
+if getent passwd | grep -q "ffritzer"; then
 	echo "Office environment, removing target 'xfce-full'"
 	dirs="$(echo "$dirs" | sed "s/xfce-full\/ \?//")"
 else
