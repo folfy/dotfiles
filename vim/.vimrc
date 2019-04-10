@@ -64,6 +64,7 @@ if ! noload
 	Plug 'ehamberg/vim-cute-python', Cond(!exists('degraded'), { 'branch' : 'moresymbols' })
 	Plug 'junegunn/vim-easy-align'
 	Plug 'easymotion/vim-easymotion'
+	Plug 'tpope/vim-eunuch'
 	Plug 'michaeljsmith/vim-indent-object'
 	Plug 'farmergreg/vim-lastplace'
 	Plug 'tbastos/vim-lua'
