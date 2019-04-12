@@ -48,6 +48,7 @@ if ! noload
 	Plug 'scrooloose/nerdtree', Cond(v:version >= 702, { 'on': 'NERDTreeToggle' })
 	Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 	Plug 'chrisbra/Recover.vim'
+	Plug 'vim-scripts/ReplaceWithRegister'
 	Plug 'ervandew/supertab'
 	Plug 'zirrostig/vim-schlepp'
 	Plug 'tpope/vim-surround'
@@ -342,15 +343,6 @@ inoremap <expr> <C-L> &insertmode ? '<C-L>' : '<Esc>'
 vmap <C-c> "+yi
 vmap <C-x> "+c
 nmap <leader><C-a> ggyG<C-o><C-o>
-
-" change / replace with yanked text
-" (overwrites default change till EOL shortcut)
-nnoremap C :set opfunc=ReplaceText<CR>g@
-function! ReplaceText(type)
-	let s:restore_reg = @"
-	silent exec "normal! `[v`]p"
-	let @" = s:restore_reg
-endfunction
 
 nnoremap K :Man <cword>
 
