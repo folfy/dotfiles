@@ -93,10 +93,10 @@ set hidden " allow modified buffers to be hidden
 set mouse=a
 if has('nvim')
 	let g:loaded_python_provider = 1
-	let g:loaded_python3_provider = 1
+	let g:python3_host_prog='python3'
+	" let g:loaded_python3_provider = 1
 	tnoremap <Esc> <C-\><C-n>
 else
-	let g:pymode_python = 'python3'
 	" seems to make problems with vim8, ubuntu in vimdiff?
 	" set shellcmdflag=-ic "default to interactive shell (bashrc/aliases)
 	set ttymouse=xterm2
@@ -113,7 +113,8 @@ set ttimeoutlen=50
 set foldenable
 " background refresh interval for some plugins, etc.
 set updatetime=500
-" set foldmethod=syntax "indent, marker, manual
+" set foldmethod=syntax "syntax, indent, marker, manual
+" set foldlevel=99
 set modelines=2
 " set autocomplete, show unfinished commands
 set wildmode=longest,list,full
@@ -216,6 +217,73 @@ function! GetELLogFold(lnum)
 	return '0'
 endfunction
 
+" elektra def-file {{{2
+" nmap <leader><C-d> :OpenDef<ENTER>
+command! ElOpenDef call <SID>ELOpenDef()
+function! s:ElOpenDef()
+	let l:fname = expand('%:t')
+	" expecting current filepath = vobs/<country>/<V20>/<DIR>/<FILE>
+	let l:vobpath = expand('%:p:h:h:h')
+	if fnamemodify(l:vobpath, ':h:t') != 'vobs'
+		" search one level further (subdir, e.g. OBJECTS-XXXX)
+		let l:vobpath = fnamemodify(l:vobpath, ':h')
+	endif
+	let l:dbtype = substitute(l:fname, "_.*", "", "")
+	let l:deffile = l:vobpath . "/APPL/" . l:dbtype . "/" . l:dbtype . "_def.dat"
+
+	let l:bufnum = bufnr(l:deffile)
+	if ! buflisted(l:bufnum)
+		execute "sview" l:deffile
+		" echo "Opened " . l:deffile
+	else
+		let l:winnum = bufwinnr(l:bufnum)
+		if l:winnum == -1
+			" Make new split
+			execute "sb" . l:bufnum
+		else
+			" Jump to split
+			execute l:winnum . "wincmd w"
+		endif
+	endif
+endfunction
+
+nmap <leader><C-d> :call <SID>ElFindDef()<ENTER>
+function! s:ElFindDef()
+	let l:searchexp = expand("<cword>")
+	call <SID>ElOpenDef()
+	" load search register and find match
+	let @/ = l:searchexp
+	call histadd("search", l:searchexp)
+	normal  n
+endfunction
+
+nmap <leader><C-b> :call <SID>ElBstDecode()<ENTER>
+command! ElBstDecode call <SID>ElBstDecode()
+function! s:ElBstDecode()
+	let l:hex = expand("<cword>")
+	if l:hex[0] == "B"
+		let l:hex = expand("<cWORD>")
+		let l:hex = l:hex[2:25]
+	endif
+	let l:string = "B'" . l:hex . "'"
+	let l:bst = system('eldbLexer.py ' . shellescape(l:string))
+	if v:shell_error
+		echo "Failed to convert \"" . l:string . "\""
+	endif
+	echo trim(l:bst)
+endfunction
+
+
+" Python {{{2
+let g:syntastic_ignore_files = ['\.py$']
+let g:pymode_python = 'python3'
+
+autocmd FileType python call PythonMode()
+function! PythonMode()
+	setlocal foldmethod=indent
+	setlocal foldlevel=99
+endfunction
+
 " PLUGINS {{{1
 " tmux {{{2
 let g:autoswap_detect_tmux = 1
@@ -316,7 +384,7 @@ nmap <F9> :TagbarToggle<CR>
 
 " easymotion {{{2
 if v:version >= 704
-	map <SPACE> <Plug>(easymotion-prefix)
+	" map <SPACE> <Plug>(easymotion-prefix)
 	nmap <C-f> <Plug>(easymotion-bd-w)
 	map f <Plug>(easymotion-f)
 	map F <Plug>(easymotion-F)
@@ -370,6 +438,7 @@ nmap <leader>p :call ToggleTabs('')<CR>
 " nmap <leader>p :set list!<CR>
 nmap <leader>l :call NumberToggle()<CR>
 nmap <leader>L :set relativenumber!<CR>
+nmap <leader><C-l> :call ColorColumnToggle()<CR>
 " toggle foldingColumn
 nmap <leader>f :let &l:foldcolumn = &l:foldcolumn ? 0 : 2<CR>
 nmap <leader>i :set paste! <CR>
@@ -462,7 +531,7 @@ else
 	colorscheme solarized
 endif
 
-" line numbers {{{1
+" line numbers / colorcolumn {{{1
 " replace with numbers.vim (but not today, requires vim >=7.3)
 set number
 if v:version >= 703
@@ -478,8 +547,21 @@ if v:version >= 703
 	augroup END
 
 	highlight ColorColumn ctermbg=magenta
-	let w:hl80=matchadd('ColorColumn', '\%81v', 100)
-	let w:hl100=matchadd('ColorColumn', '\%101v', 100)
+	fun! ColorColumnAdd()
+		let w:hlcol=1
+		let w:hl80=matchadd('ColorColumn', '\%81v', 100)
+		let w:hl100=matchadd('ColorColumn', '\%101v', 100)
+	endfun
+	fun! ColorColumnToggle()
+		if w:hlcol
+			let w:hlcol=0
+			call matchdelete(w:hl80)
+			call matchdelete(w:hl100)
+		else
+			call ColorColumnAdd()
+		endif
+	endfun
+	call ColorColumnAdd()
 endif
 
 function! NumberToggle()

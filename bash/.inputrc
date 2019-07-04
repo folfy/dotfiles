@@ -4,7 +4,11 @@ $include /etc/inputrc
 set completion-ignore-case on
 
 # List all matches in case multiple possible completions are possible
-set show-all-if-ambiguous on
+# set show-all-if-ambiguous on
+# show-all-if-ambiguous, but only if no partial complete possible
+set show-all-if-unmodified on
+# Perform partial completion on first Tab
+# set menu-complete-display-prefix on
 # Like Tab autocomplete regardless of filename case
 set completion-ignore-case on
 # Automatically append slash to symlink pointing to dir
@@ -13,7 +17,7 @@ set mark-symlinked-directories on
 set completion-query-items 200
 
 # Replace first part of autocomplete if common part is longer than n
-set completion-prefix-display-length 5
+set completion-prefix-display-length 4
 
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
