@@ -43,11 +43,11 @@ if ! noload
 	Plug 'wincent/command-t'
 	Plug 'tpope/vim-fugitive'
 	if filereadable('/usr/local/opt/fzf')
-		Plug '/usr/local/opt/fzf'
+		Plug '/usr/local/opt/fzf', Cond(v:version >= 704)
 	else
-		Plug 'junegunn/fzf', Cond(v:version >=704, { 'dir': '~/.fzf', 'do': './install --all' })
+		Plug 'junegunn/fzf', Cond(v:version >= 704, { 'dir': '~/.fzf', 'do': './install --all' })
 	endif
-	Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/fzf.vim', Cond(v:version >= 704)
 	Plug 'airblade/vim-gitgutter', Cond(v:version >= 703)
 	Plug 'sjl/gundo.vim'
 	Plug 'tomasr/molokai'
