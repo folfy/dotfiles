@@ -34,7 +34,12 @@ if ! noload
 
 	function! Cond(cond, ...)
 		let opts = get(a:000, 0, {})
-		return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+		" problem with vim 7.0 ...
+		" return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+		if !a:cond
+			return extend(opts, { 'on': [], 'for': [] })
+		endif
+		return l:opts
 	endfunction
 
 	call plug#begin('~/.vim/plugged')
