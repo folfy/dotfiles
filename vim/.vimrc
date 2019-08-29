@@ -65,7 +65,7 @@ if ! noload
 	Plug 'tpope/vim-surround'
 	Plug 'vim-syntastic/syntastic', Cond(v:version >= 701)
 	Plug 'godlygeek/tabular'
-	Plug 'majutsushi/tagbar', Cond(v:version >= 701)
+	Plug 'majutsushi/tagbar', Cond(v:version >= 703)
 	Plug 'mbbill/undotree'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'vim-airline/vim-airline'
@@ -83,7 +83,7 @@ if ! noload
 	Plug 'tpope/vim-repeat'
 	Plug 'sbdchd/vim-shebang'
 	Plug 'roxma/vim-tmux-clipboard'
-	Plug 'tmux-plugins/vim-tmux-focus-events'
+	Plug 'tmux-plugins/vim-tmux-focus-events', Cond(v:version >= 701)
 	Plug 'ntpeters/vim-better-whitespace'
 	call plug#end()
 endif
