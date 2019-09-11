@@ -205,7 +205,7 @@ let g:surround_{char2nr('q')} = "\\\"\r\\\""
 
 autocmd FileType sh setlocal commentstring=#\ %s
 autocmd FileType vim setlocal commentstring=\"\ %s
-autocmd FileType chill setlocal tabstop=8
+autocmd FileType chill setlocal tabstop=8 softtabstop=2
 augroup filetypedetect
 	au! BufRead,BufNewFile *.chinc	setfiletype chill
 	au! BufRead,BufNewFile *.chinc	matchdelete(w:hl80)
@@ -220,7 +220,7 @@ command! ELlog call ELLogMode()
 function! ELLogMode()
 	setlocal foldmethod=expr
 	setlocal foldexpr=GetELLogFold(v:lnum)
-	setlocal list lcs=tab:\|\ 
+	setlocal list listchars=tab:\|\ 
 endfunction
 
 function! GetELLogFold(lnum)
@@ -437,8 +437,9 @@ set pastetoggle=<F10>
 set cursorcolumn
 nmap <leader>h :set cursorcolumn!<CR>
 nmap <leader>H :set cursorline!<CR>
-nmap <leader>P :call ToggleTabs('simple')<CR>
 nmap <leader>p :call ToggleTabs('')<CR>
+nmap <leader>P :call ToggleTabs('simple')<CR>
+nmap <leader><c-p> :call ToggleTabs('pipe')<CR>
 " nmap <leader>p :set list!<CR>
 nmap <leader>l :call NumberToggle()<CR>
 nmap <leader>L :set relativenumber!<CR>
@@ -612,13 +613,15 @@ endfunction
 command! -bang -range ToggleSlash <line1>,<line2>call ToggleSlash(<bang>1)
 noremap <silent> <leader><Bslash> :ToggleSlash<CR>
 
-function! ToggleTabs(simple)
+function! ToggleTabs(mode)
 	set list!
-	if v:version < 703 || a:simple == 'simple'
+	if v:version < 703 || a:mode == 'simple'
 		set listchars=tab:>\ ,
-		if a:simple == 'simple'
+		if a:mode == 'simple'
 			set list
 		endif
+	elseif a:mode == 'pipe'
+		set listchars=tab:\|\ 
 	else
 		set listchars=tab:»\ ,eol:¬,trail:.,nbsp:~
 	endif
