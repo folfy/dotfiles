@@ -13,5 +13,8 @@
     <property name="dpms-on-battery-sleep" type="empty"/>
     <property name="dpms-on-battery-off" type="empty"/>
     <property name="show-panel-label" type="empty"/>
+    <property name="inactivity-sleep-mode-on-ac" type="empty"/>
+    <property name="inactivity-sleep-mode-on-battery" type="empty"/>
+    <property name="show-tray-icon" type="bool" value="false"/>
   </property>
 </channel>

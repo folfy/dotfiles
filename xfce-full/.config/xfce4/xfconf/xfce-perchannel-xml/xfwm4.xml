@@ -54,6 +54,7 @@
     <property name="wrap_windows" type="empty"/>
     <property name="wrap_workspaces" type="empty"/>
     <property name="borderless_maximize" type="bool" value="true"/>
+    <property name="cycle_raise" type="bool" value="false"/>
     <property name="cycle_hidden" type="bool" value="true"/>
     <property name="cycle_minimum" type="bool" value="true"/>
     <property name="cycle_tabwin_mode" type="int" value="0"/>
@@ -61,6 +62,7 @@
     <property name="double_click_action" type="string" value="maximize"/>
     <property name="easy_click" type="string" value="Alt"/>
     <property name="focus_hint" type="bool" value="true"/>
+    <property name="frame_border_top" type="int" value="0"/>
     <property name="horiz_scroll_opacity" type="bool" value="false"/>
     <property name="inactive_opacity" type="int" value="100"/>
     <property name="move_opacity" type="int" value="100"/>
@@ -70,7 +72,7 @@
     <property name="raise_with_any_button" type="bool" value="true"/>
     <property name="resize_opacity" type="int" value="100"/>
     <property name="snap_resist" type="bool" value="false"/>
-    <property name="sync_to_vblank" type="bool" value="false"/>
+    <property name="vblank_mode" type="string" value="auto"/>
     <property name="tile_on_move" type="bool" value="true"/>
     <property name="titleless_maximize" type="bool" value="false"/>
     <property name="toggle_workspaces" type="bool" value="false"/>
