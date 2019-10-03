@@ -319,9 +319,9 @@ let g:syntastic_check_on_wq = 0
 " airline {{{2
 if ! noload
 	set laststatus=2
-	if has('gui_running') "&& ! has ('win32')
+	" if has('gui_running') "&& ! has ('win32')
 		let g:airline_powerline_fonts=1
-	endif
+	" endif
 	let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 	let g:airline#extensions#whitespace#mixed_indent_algo = 2
 	let g:airline#extensions#tabline#enabled = 1
