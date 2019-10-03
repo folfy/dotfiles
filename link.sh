@@ -11,6 +11,7 @@ else
 	mode=""
 fi
 
+cd "$(dirname "$0")"
 dirs="$(ls -d */)"
 target="$HOME"
 
