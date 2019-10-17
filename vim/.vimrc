@@ -214,6 +214,9 @@ augroup filetypedetect
 augroup END
 let g:vimsyn_folding='af'
 
+" Markdown {{{2
+autocmd FileType markdown setlocal spell
+
 " elektra-log {{{2
 command! ELlog call ELLogMode()
 
