@@ -66,6 +66,7 @@ if ! noload
 	Plug 'vim-syntastic/syntastic', Cond(v:version >= 701)
 	Plug 'godlygeek/tabular'
 	Plug 'majutsushi/tagbar', Cond(v:version >= 703)
+	Plug 'lvht/tagbar-markdown', { 'on': 'TagbarToggle', 'for': 'markdown' }
 	Plug 'mbbill/undotree'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'vim-airline/vim-airline'
@@ -402,10 +403,10 @@ nmap <F9> :TagbarToggle<CR>
 if v:version >= 704
 	" map <SPACE> <Plug>(easymotion-prefix)
 	nmap <C-f> <Plug>(easymotion-bd-w)
-	map f <Plug>(easymotion-f)
-	map F <Plug>(easymotion-F)
-	map t <Plug>(easymotion-t)
-	map T <Plug>(easymotion-T)
+	map <leader>f <Plug>(easymotion-f)
+	map <leader>F <Plug>(easymotion-F)
+	map <leader>t <Plug>(easymotion-t)
+	map <leader>T <Plug>(easymotion-T)
 
 	let g:EasyMotion_smartcase = 1
 	let g:EasyMoition_enter_jump_first = 1
@@ -448,14 +449,14 @@ nmap <leader>l :call NumberToggle()<CR>
 nmap <leader>L :set relativenumber!<CR>
 nmap <leader><C-l> :call ColorColumnToggle()<CR>
 " toggle foldingColumn
-nmap <leader>f :let &l:foldcolumn = &l:foldcolumn ? 0 : 2<CR>
+nmap <leader>o :let &l:foldcolumn = &l:foldcolumn ? 0 : 2<CR>
 nmap <leader>i :set paste! <CR>
 nmap <leader>w :set wrap!<CR>
 nmap <leader>W :set wrapscan!<CR>
 nmap <leader>S :set scrollbind!<CR>
 set scrolloff=5
 nmap <leader>z :let &scrolloff=5-&scrolloff<CR>
-nmap <leader>F :FixWhitespace<CR>
+nmap <leader>O :FixWhitespace<CR>
 nmap <leader>c :setlocal spell! spelllang=en_us<CR>
 " spellcheck - move with ]s and [s, fix z=, add zg
 nmap <leader>D :DiffSaved<CR>
@@ -510,8 +511,8 @@ vmap D       <Plug>SchleppDup
 let g:DVB_TrimWS = 1
 
 " Theme / syntax-highlighting {{{1
-nmap <leader>t :call ThemeToggle("molokai")<CR>
-nmap <leader>T :call ThemeToggle("desert")<CR>
+nmap <leader>u :call ThemeToggle("molokai")<CR>
+nmap <leader>U :call ThemeToggle("desert")<CR>
 nmap <leader><C-t> :call ThemeToggle("solarized")<CR>
 function! ThemeToggle(new)
 	if ( g:colors_name != a:new )
