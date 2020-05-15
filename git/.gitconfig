@@ -18,6 +18,18 @@
 
 [core]
 	excludefile = ~/.global.gitignore
+	# honor executable bit
+	filemode = true
+	autocrlf = false
 
 [include]
 	path = ~/.gitconfig.work
+
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes
+
+; [diff]
+; 	tool = vfugitive
+
+; [difftool "vfugitive"]
+; 	cmd = myvim 'nvim.appimage' -c 'Gdiffsplit' "$LOCAL"
