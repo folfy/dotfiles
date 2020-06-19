@@ -649,6 +649,8 @@ function! s:DiffWithSaved()
 	exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
+	\ | diffthis | wincmd p | diffthis
 
 " GUI {{{1
 if has('gui_running')
