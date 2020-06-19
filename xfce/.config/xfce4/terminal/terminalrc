@@ -34,4 +34,6 @@ MiscNewTabAdjacent=FALSE
 TabActivityColor=#dc322f
 ShortcutsNoMenukey=TRUE
 ScrollingLines=20000
+MiscScrollAlternateScreen=TRUE
+ShortcutsNoMnemonics=TRUE
 
