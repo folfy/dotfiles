@@ -12,7 +12,6 @@
     <property name="SoundThemeName" type="empty"/>
     <property name="EnableEventSounds" type="empty"/>
     <property name="EnableInputFeedbackSounds" type="empty"/>
-    <property name="FallbackIconTheme" type="empty"/>
   </property>
   <property name="Xft" type="empty">
     <property name="DPI" type="empty"/>
@@ -20,7 +19,6 @@
     <property name="Hinting" type="empty"/>
     <property name="HintStyle" type="empty"/>
     <property name="RGBA" type="empty"/>
-    <property name="Lcdfilter" type="empty"/>
   </property>
   <property name="Gtk" type="empty">
     <property name="CanChangeAccels" type="empty"/>
