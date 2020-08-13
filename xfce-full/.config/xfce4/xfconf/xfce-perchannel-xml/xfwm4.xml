@@ -49,7 +49,6 @@
     <property name="urgent_blink" type="empty"/>
     <property name="use_compositing" type="empty"/>
     <property name="workspace_count" type="empty"/>
-    <property name="workspace_names" type="empty"/>
     <property name="wrap_resistance" type="empty"/>
     <property name="wrap_windows" type="empty"/>
     <property name="wrap_workspaces" type="empty"/>
@@ -80,5 +79,8 @@
     <property name="wrap_cycle" type="bool" value="true"/>
     <property name="wrap_layout" type="bool" value="true"/>
     <property name="zoom_desktop" type="bool" value="true"/>
+    <property name="workspace_names" type="array">
+      <value type="string" value="Workspace 1"/>
+    </property>
   </property>
 </channel>

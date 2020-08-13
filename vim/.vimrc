@@ -88,6 +88,12 @@ if ! noload
 	Plug 'tmux-plugins/vim-tmux-focus-events', Cond(v:version >= 701)
 	Plug 'ntpeters/vim-better-whitespace'
 	call plug#end()
+
+	if empty(glob('~/.vim/plugged'))
+		" return here to continue loading after PlugInstall finished and
+		" reloads the vimrc file
+		finish
+	endif
 endif
 
 " vim settings {{{1
