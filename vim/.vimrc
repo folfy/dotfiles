@@ -75,6 +75,7 @@ if ! noload
 	Plug 'altercation/vim-colors-solarized'
 	Plug 'tpope/vim-commentary'
 	Plug 'ehamberg/vim-cute-python', Cond(!exists('degraded'), { 'branch' : 'moresymbols' })
+	" Plug 'ehamberg/vim-cute-python', Cond(!exists('degraded'))
 	Plug 'junegunn/vim-easy-align'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'tpope/vim-eunuch'
@@ -136,6 +137,16 @@ set wildmenu
 set showcmd
 " don't save local / global vars in session
 set ssop-=options
+" save session in global directory
+set ssop-=curdir
+set ssop+="sesdir=~/.vim/sessions"
+
+com! Restore call Restore()
+
+function! Restore()
+	:bufdo bd
+	:source ~/.vim/sessions/Session.vim
+endfunction
 
 let mapleader=','
 
@@ -649,7 +660,7 @@ function! s:DiffWithSaved()
 	exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
-command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
+com! DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_
 	\ | diffthis | wincmd p | diffthis
 
 " GUI {{{1
