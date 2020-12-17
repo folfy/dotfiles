@@ -27,7 +27,17 @@
 
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes
+
+	lg1 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes -n 10
+	lg2 = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes -n 20
+	;  only supported with git 2.20+
+	; lg1 = lg -n 10
+	; lg2 = lg -n 20
+
 	ds = diff --staged
+
+	; show version in vim
+	sv = "!PAGER='vim -c \"setlocal buftype=nofile bufhidden=hide noswapfile\" -' git -c color.ui=false show"
 
 ; [diff]
 ; 	tool = vfugitive
