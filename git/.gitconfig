@@ -1,6 +1,6 @@
 [user]
-	email = folfy@users.noreply.github.com
 	name = Folfy
+	email = folfy@users.noreply.github.com
 
 [credential]
 	helper = store
