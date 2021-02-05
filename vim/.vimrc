@@ -225,6 +225,8 @@ let g:surround_{char2nr('q')} = "\\\"\r\\\""
 autocmd FileType sh setlocal commentstring=#\ %s
 autocmd FileType vim setlocal commentstring=\"\ %s
 autocmd FileType chill setlocal tabstop=8 softtabstop=2
+autocmd FileType promela setlocal tabstop=8 softtabstop=2
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup filetypedetect
 	au! BufRead,BufNewFile *.chinc	setfiletype chill
 	au! BufRead,BufNewFile *.chinc	matchdelete(w:hl80)
@@ -242,7 +244,10 @@ command! ELlog call ELLogMode()
 function! ELLogMode()
 	setlocal foldmethod=expr
 	setlocal foldexpr=GetELLogFold(v:lnum)
-	setlocal list listchars=tab:\|\ 
+	setlocal list listchars=tab:\|\ ,
+	let w:hlcol=0
+	call matchdelete(w:hl80)
+	call matchdelete(w:hl100)
 endfunction
 
 function! GetELLogFold(lnum)
@@ -312,6 +317,10 @@ endfunction
 " Python {{{2
 let g:syntastic_ignore_files = ['\.py$']
 let g:pymode_python = 'python3'
+
+let g:pymode_options_max_line_length = 99
+let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
+let g:pymode_options_colorcolumn = 1
 
 autocmd FileType python call PythonMode()
 function! PythonMode()
@@ -459,6 +468,10 @@ set pastetoggle=<F10>
 set cursorcolumn
 nmap <leader>h :set cursorcolumn!<CR>
 nmap <leader>H :set cursorline!<CR>
+" noremap <Leader>p "0p
+" noremap <Leader>P "0P
+" vnoremap <Leader>p "0p
+" vnoremap <Leader>P "0P
 nmap <leader>p :call ToggleTabs('')<CR>
 nmap <leader>P :call ToggleTabs('simple')<CR>
 nmap <leader><c-p> :call ToggleTabs('pipe')<CR>
