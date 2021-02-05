@@ -3,11 +3,11 @@
 	email = fabian.fritzer@thalesgroup.com
 
 [http "http://github.com"]
-	# proxy = https://gwhttp-app.corp.thales:8000
+	# proxy = https://internet-app.corp.thales:8080
 	proxy = http://lab-proxy.rss.d3s.at.thales:8080
 
 [http "https://github.com"]
-	# proxy = https://gwhttp-app.corp.thales:8000
+	# proxy = https://internet-app.corp.thales:8080
 	proxy = http://lab-proxy.rss.d3s.at.thales:8080
 
 [http]
