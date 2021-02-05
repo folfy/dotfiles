@@ -44,6 +44,7 @@ if ! noload
 
 	call plug#begin('~/.vim/plugged')
 	Plug 'mileszs/ack.vim'
+	Plug 'tpope/vim-abolish'
 	Plug 'vim-scripts/CmdlineComplete'
 	Plug 'wincent/command-t'
 	Plug 'tpope/vim-fugitive'
@@ -113,8 +114,8 @@ set autoindent
 set hidden " allow modified buffers to be hidden
 set mouse=a
 if has('nvim')
-	let g:loaded_python_provider = 1
-	let g:python3_host_prog='python3'
+	" let g:loaded_python_provider = 1
+	" let g:python3_host_prog='python3'
 	" let g:loaded_python3_provider = 1
 	tnoremap <Esc> <C-\><C-n>
 else
