@@ -85,7 +85,8 @@ if ! noload
 	Plug 'tbastos/vim-lua'
 	Plug 'tpope/vim-repeat'
 	Plug 'sbdchd/vim-shebang'
-	Plug 'roxma/vim-tmux-clipboard'
+	" tmux-clipboard causes tmux to crash from time to time
+	" Plug 'roxma/vim-tmux-clipboard'
 	Plug 'tmux-plugins/vim-tmux-focus-events', Cond(v:version >= 701)
 	Plug 'ntpeters/vim-better-whitespace'
 	call plug#end()
