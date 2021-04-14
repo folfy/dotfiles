@@ -311,7 +311,8 @@ function! s:ElBstDecode()
 	if v:shell_error
 		echo "Failed to convert \"" . l:string . "\""
 	endif
-	echo trim(l:bst)
+	echo l:bst
+	" echo trim(l:bst)
 endfunction
 
 
@@ -493,8 +494,8 @@ nmap <leader>c :setlocal spell! spelllang=en_us<CR>
 " spellcheck - move with ]s and [s, fix z=, add zg
 nmap <leader>D :DiffSaved<CR>
 nmap <leader>d "=strftime("%d.%m.%Y")<CR>P
-nmap <F3> "=strftime("%d.%m.%Y")<CR>P
-imap <F3> <C-R>=strftime("%d.%m.%Y")<CR>
+nmap <F3> "=strftime("%Y-%m-%d")<CR>P
+imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
 " reload file
 nmap <leader>e :edit<CR>
 nmap <leader>C :edit $HOME/.vimrc<CR>
