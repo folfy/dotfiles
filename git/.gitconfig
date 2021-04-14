@@ -26,7 +26,8 @@
 	path = ~/.gitconfig.work
 
 [alias]
-	lg = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes --author-date-order
+	lg  = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes --author-date-order
+	lgc = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d' --abbrev-commit --branches --tags --author-date-order
 
 	lg1 = "!git --no-pager lg -n 10"
 	lg2 = "!git --no-pager lg -n 20"

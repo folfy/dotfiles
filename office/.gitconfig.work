@@ -10,6 +10,12 @@
 	# proxy = https://internet-app.corp.thales:8080
 	proxy = http://lab-proxy.rss.d3s.at.thales:8080
 
-[http]
+[http "https://atvievla9138.thales.at"]
+	# proxy = https://internet-app.corp.thales:8080
+	proxy = http://lab-proxy.rss.d3s.at.thales:8080
+	name = ffritzer
 	#sslVerify = false
+	sslCAInfo=/homes/ffritzer/.atvievla9138.thales.at.crt
+
+[http]
 	#sslCAInfo = /homes/jdoe/atvievla9138.thales.at.crt
