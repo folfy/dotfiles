@@ -1,14 +1,22 @@
 [user]
 	name = Folfy
 	email = folfy@users.noreply.github.com
+	; signingkey = ABCDEF
 
 [credential]
 	helper = store
+
+[commit]
+	gpgSign = true
+
+[tag]
+	gpgSign = true
 
 [push]
 	default = simple
 	recurseSubmodules = on-demand
 	followTags = true
+	gpgSign = if-asked
 
 [diff]
 	tool = vimdiff

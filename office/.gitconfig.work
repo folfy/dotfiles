@@ -1,6 +1,7 @@
 [user]
-	name = ffritzer
+	name = Fabian Fritzer
 	email = fabian.fritzer@thalesgroup.com
+	signingKey = C4F2F3646E7EFF11838061D8596BAED85AAEB67E
 
 [http "http://github.com"]
 	# proxy = https://internet-app.corp.thales:8080
