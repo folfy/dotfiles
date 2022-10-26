@@ -27,26 +27,60 @@
 [core]
 	excludefile = ~/.global.gitignore
 	# honor executable bit
-	filemode = true
+	fileMode = true
 	autocrlf = false
+	whitespace = trailing-space,space-before-tab
+	; editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
 
 [include]
 	path = ~/.gitconfig.work
 
 [alias]
-	lg  = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes --author-date-order
-	lgc = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d' --abbrev-commit --branches --tags --author-date-order
+	s = status
+	br = branch
+	co = checkout
+	ci = commit -m
+	ca = commit --amend
+	can = commit --amend --no-edit
+	cinc = commit
+	p = pull
+	mtag = tag -m
+	atag = tag -m ''
 
-	lg1 = "!git --no-pager lg -n 10"
-	lg2 = "!git --no-pager lg -n 20"
-
+	lg = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --tags --remotes --author-date-order
+	lgc = log --color --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d' --abbrev-commit --author-date-order
+	lgs = log --color --pretty=tformat:'* %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=format:'%Y-%m-%d' --abbrev-commit --author-date-order
+	lg1 = !git --no-pager lg -n 10
+	lg2 = !git --no-pager lg -n 20
 	ds = diff --staged
 
 	; show version in vim
 	sv = "!PAGER='vim -c \"setlocal buftype=nofile bufhidden=hide noswapfile\" -' git -c color.ui=false show"
+
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
 
 ; [diff]
 ; 	tool = vfugitive
 
 ; [difftool "vfugitive"]
 ; 	cmd = myvim 'nvim.appimage' -c 'Gdiffsplit' "$LOCAL"
+
+; [merge]
+; 	tool = kdiff3
+; [mergetool "kdiff3"]
+; 	path = C:/Program Files/KDiff3/kdiff3.exe
+; [difftool "kdiff3"]
+; 	path = C:/Program Files/KDiff3/kdiff3.exe
+; [pull]
+; 	rebase = false
+; [fetch]
+; 	prune = false
+; [rebase]
+; 	autoStash = false
+
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = cyan
