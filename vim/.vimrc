@@ -1,5 +1,7 @@
 " vim:foldmethod=marker:foldlevel=0:foldcolumn=2
-set nocompatible
+if &compatible
+	set nocompatible
+endif
 scriptencoding utf-8
 
 " runtime load {{{1
@@ -45,6 +47,7 @@ if ! noload
 	call plug#begin('~/.vim/plugged')
 	Plug 'mileszs/ack.vim'
 	Plug 'tpope/vim-abolish'
+	Plug 'tpope/vim-sleuth'
 	Plug 'vim-scripts/CmdlineComplete'
 	Plug 'wincent/command-t'
 	Plug 'tpope/vim-fugitive'
@@ -55,9 +58,9 @@ if ! noload
 	endif
 	Plug 'junegunn/fzf.vim', Cond(v:version >= 704)
 	Plug 'airblade/vim-gitgutter', Cond(v:version >= 703)
-	Plug 'sjl/gundo.vim'
 	Plug 'tomasr/molokai'
 	Plug 'scrooloose/nerdtree', Cond(v:version >= 702, { 'on': 'NERDTreeToggle' })
+	" Plug 'qwertologe/nextval.vim'
 	Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 	Plug 'chrisbra/Recover.vim'
 	Plug 'vim-scripts/ReplaceWithRegister'
@@ -85,6 +88,8 @@ if ! noload
 	Plug 'tbastos/vim-lua'
 	Plug 'tpope/vim-repeat'
 	Plug 'sbdchd/vim-shebang'
+	Plug 'aymericbeaumet/vim-symlink'
+	Plug 'moll/vim-bbye' " dependency for vim-symlink to clear buffer
 	" tmux-clipboard causes tmux to crash from time to time
 	" Plug 'roxma/vim-tmux-clipboard'
 	Plug 'tmux-plugins/vim-tmux-focus-events', Cond(v:version >= 701)
@@ -114,6 +119,7 @@ set noexpandtab
 set autoindent
 set hidden " allow modified buffers to be hidden
 set mouse=a
+set backspace=indent,eol,start " allow backspace over everything in insert mode
 if has('nvim')
 	" let g:loaded_python_provider = 1
 	" let g:python3_host_prog='python3'
@@ -130,8 +136,10 @@ set incsearch
 " if uppercase-char in search = case-sensitive
 set ignorecase
 set smartcase
+set display=truncate " Show @@@ in the last line if it is truncated.
 " set timeout (commands; ESC-Key)
 set timeoutlen=1000
+set ttimeout
 set ttimeoutlen=50
 set foldenable
 " background refresh interval for some plugins, etc.
@@ -489,7 +497,7 @@ nmap <leader>W :set wrapscan!<CR>
 nmap <leader>S :set scrollbind!<CR>
 set scrolloff=5
 nmap <leader>z :let &scrolloff=5-&scrolloff<CR>
-nmap <leader>O :FixWhitespace<CR>
+nmap <leader>O :StripWhitespace<CR>
 nmap <leader>c :setlocal spell! spelllang=en_us<CR>
 " spellcheck - move with ]s and [s, fix z=, add zg
 nmap <leader>D :DiffSaved<CR>
@@ -504,6 +512,9 @@ nmap <CR> o<Esc>k
 
 nmap <C-l> gcl
 vmap <C-l> gc
+
+" increase version number
+nmap <leader><C-a> :g/^ver=/exe "norm! $h\<C-a>"
 
 " buffers / windows / movement {{{2
 nmap <silent> <C-k> :wincmd k<CR>
