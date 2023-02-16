@@ -40,10 +40,11 @@
 	br = branch
 	co = checkout
 	ci = commit -m
+	cin = commit --no-edit
 	ca = commit --amend
 	can = commit --amend --no-edit
-	cinc = commit
 	p = pull
+	pushd = push --set-upstream origin HEAD
 	mtag = tag -m
 	atag = tag -m ''
 
