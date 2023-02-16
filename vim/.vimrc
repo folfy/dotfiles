@@ -77,6 +77,7 @@ if ! noload
 	Plug 'benknoble/vim-auto-origami', Cond(exists('v:true'))
 	Plug 'ConradIrwin/vim-bracketed-paste'
 	Plug 'altercation/vim-colors-solarized'
+	" Plug 'lifepillar/vim-solarized8'
 	Plug 'tpope/vim-commentary'
 	Plug 'ehamberg/vim-cute-python', Cond(!exists('degraded'), { 'branch' : 'moresymbols' })
 	" Plug 'ehamberg/vim-cute-python', Cond(!exists('degraded'))
@@ -582,6 +583,9 @@ if exists('degraded')
 	colorscheme molokai
 else
 	colorscheme solarized
+	" somehow we end up with just 8 colors in new vim 8.2,
+	" even though ':echo &t_Co' returns 16
+	set t_Co=16
 endif
 
 " line numbers / colorcolumn {{{1
