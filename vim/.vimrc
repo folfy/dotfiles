@@ -179,6 +179,7 @@ endif
 " Backup - Enable backup-file and undo-file in ~/.vim/backup
 " there seems to be an issue, let *dir is not working properly
 set backup
+set backupcopy=yes
 let &backupdir = vimdir . "/backup//,."
 let &dir = vimdir . "/swap//,."
 if v:version > 702
