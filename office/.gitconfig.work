@@ -20,3 +20,6 @@
 
 [http]
 	#sslCAInfo = /homes/jdoe/atvievla9138.thales.at.crt
+
+[safe]
+	directory = /nfsshares/tas/tools/TAS/common/src/conserver

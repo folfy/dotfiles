@@ -6,6 +6,9 @@
 [credential]
 	helper = store
 
+[fetch]
+	prune = true
+
 [commit]
 	gpgSign = true
 
@@ -30,6 +33,7 @@
 	fileMode = true
 	autocrlf = false
 	whitespace = trailing-space,space-before-tab
+	editor = vim
 	; editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
 
 [include]
@@ -76,8 +80,6 @@
 ; 	path = C:/Program Files/KDiff3/kdiff3.exe
 ; [pull]
 ; 	rebase = false
-; [fetch]
-; 	prune = false
 ; [rebase]
 ; 	autoStash = false
 
