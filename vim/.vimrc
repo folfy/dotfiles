@@ -516,7 +516,7 @@ nmap <C-l> gcl
 vmap <C-l> gc
 
 " increase version number
-nmap <leader><C-a> :g/^ver=/exe "norm! $h\<C-a>"
+nmap <leader><C-a> :g/^\s*\(ver\\|__version__\s*\)=/exe "norm! $h\<C-a>"<CR>
 
 " buffers / windows / movement {{{2
 nmap <silent> <C-k> :wincmd k<CR>
