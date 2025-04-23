@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+LC_NUMERIC=C
 (free -m; uptime) | awk -v host="$HOSTNAME" '
 /^Mem:/ {
 total = $2
