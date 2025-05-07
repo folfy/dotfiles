@@ -1,7 +1,7 @@
 [user]
 	name = Folfy
 	email = folfy@users.noreply.github.com
-	; signingkey = ABCDEF
+	; signingkey = ABCDEF (auto-selected by name and email)
 
 [credential]
 	helper = store
