@@ -311,12 +311,12 @@ endfunction
 nmap <leader><C-b> :call <SID>ElBstDecode()<ENTER>
 command! ElBstDecode call <SID>ElBstDecode()
 function! s:ElBstDecode()
-	let l:hex = expand("<cword>")
-	if l:hex[0] == "B"
-		let l:hex = expand("<cWORD>")
-		let l:hex = l:hex[2:25]
+	let l:string = expand("<cword>")
+	if l:string[0] == "B"
+		let l:string = expand("<cWORD>")
+	else
+		let l:string = "B'" . l:string . "'"
 	endif
-	let l:string = "B'" . l:hex . "'"
 	let l:bst = system('eldbLexer.py ' . shellescape(l:string))
 	if v:shell_error
 		echo "Failed to convert \"" . l:string . "\""
