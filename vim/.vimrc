@@ -95,6 +95,7 @@ if ! noload
 	" Plug 'roxma/vim-tmux-clipboard'
 	Plug 'tmux-plugins/vim-tmux-focus-events', Cond(v:version >= 701)
 	Plug 'ntpeters/vim-better-whitespace'
+	Plug 'github/copilot.vim'
 	call plug#end()
 
 	if empty(glob('~/.vim/plugged'))
