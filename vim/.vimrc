@@ -58,6 +58,7 @@ if ! noload
 	endif
 	Plug 'junegunn/fzf.vim', Cond(v:version >= 704)
 	Plug 'airblade/vim-gitgutter', Cond(v:version >= 703)
+	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'tomasr/molokai'
 	Plug 'scrooloose/nerdtree', Cond(v:version >= 702, { 'on': 'NERDTreeToggle' })
 	" Plug 'qwertologe/nextval.vim'
@@ -69,7 +70,7 @@ if ! noload
 	Plug 'tpope/vim-surround'
 	Plug 'vim-syntastic/syntastic', Cond(v:version >= 701)
 	Plug 'godlygeek/tabular'
-	Plug 'majutsushi/tagbar', Cond(v:version >= 703)
+	Plug 'preservim/tagbar', Cond(v:version >= 703)
 	Plug 'lvht/tagbar-markdown', { 'on': 'TagbarToggle', 'for': 'markdown' }
 	Plug 'mbbill/undotree'
 	Plug 'tpope/vim-unimpaired'
@@ -89,6 +90,7 @@ if ! noload
 	Plug 'tbastos/vim-lua'
 	Plug 'tpope/vim-repeat'
 	Plug 'sbdchd/vim-shebang'
+	Plug 'kshenoy/vim-signature'
 	Plug 'aymericbeaumet/vim-symlink'
 	Plug 'moll/vim-bbye' " dependency for vim-symlink to clear buffer
 	" tmux-clipboard causes tmux to crash from time to time
@@ -176,6 +178,7 @@ else
 	let vimdir=expand('~/.vim')
 	set tags=~/bin/.tags,$datap/.tags,./.tags
 endif
+let g:gutentags_ctags_tagfile = '.tags'
 
 " Backup - Enable backup-file and undo-file in ~/.vim/backup
 " there seems to be an issue, let *dir is not working properly
@@ -454,6 +457,10 @@ if v:version >= 704
 	let g:EasyMotion_keys = "asdghklqwertzuiopyxcvbnmfj"
 endif
 
+" Signature {{{2
+let g:SignatureMarkTextHLDynamic = 1
+let g:SignatureMarkerTextHLDynamic = 1
+
 " SHORTCUTS {{{1
 " general shortcuts {{{2
 cmap w!! %!sudo tee > /dev/null %
@@ -520,17 +527,12 @@ vmap <C-l> gc
 nmap <leader><C-a> :g/^\s*\(ver\\|__version__\s*\)=/exe "norm! $h\<C-a>"<CR>
 
 " buffers / windows / movement {{{2
+nnoremap <leader>j <C-]>
+
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
-
-map <silent> <C-t>k :tabrewind<CR>
-map <silent> <C-t>j :tablast<CR>
-map <silent> <C-t>h :tabprevious<CR>
-map <silent> <C-t>l :tabnext<CR>
-map <silent> <C-t>n :tabnew<CR>
-map <silent> <C-t>c :tabclose<CR>
 
 nmap <C-p> :bp<CR>
 nmap <C-n> :bn<CR>
