@@ -28,7 +28,7 @@
 	prompt = false
 
 [core]
-	excludefile = ~/.global.gitignore
+	; excludesFile = ~/.config/.git/ignore
 	# honor executable bit
 	fileMode = true
 	autocrlf = false
@@ -78,8 +78,8 @@
 ; 	path = C:/Program Files/KDiff3/kdiff3.exe
 ; [difftool "kdiff3"]
 ; 	path = C:/Program Files/KDiff3/kdiff3.exe
-; [pull]
-; 	rebase = false
+[pull]
+	rebase = true
 ; [rebase]
 ; 	autoStash = false
 
