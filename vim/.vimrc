@@ -132,7 +132,8 @@ if has('nvim')
 else
 	" seems to make problems with vim8, ubuntu in vimdiff?
 	" set shellcmdflag=-ic "default to interactive shell (bashrc/aliases)
-	set ttymouse=xterm2
+	" set ttymouse=xterm2
+	set ttymouse=sgr
 endif
 " highlight search; immediate search
 set hlsearch
@@ -569,9 +570,11 @@ function! ThemeToggle(new)
 	else
 		if ( g:solarized_termcolors == 16 && a:new == 'solarized' )
 			let g:solarized_termcolors = 256
+			let g:solarized_termtrans = 0
 			let g:airline_powerline_fonts=1
 		else
 			let g:solarized_termcolors = 16
+			let g:solarized_termtrans = 1
 			let g:airline_powerline_fonts=0
 		endif
 		set background=dark
@@ -580,16 +583,18 @@ function! ThemeToggle(new)
 	" echom 'Changed colorscheme to ' . g:colors_name
 endfunction
 
+autocmd ColorScheme * highlight! link SignColumn LineNr
 set t_ut= " bugfix - disable clearing using BG-color
 " set lazyredraw          " redraw only when we need to.
 set background=dark
 if exists('degraded')
 	colorscheme molokai
 else
-	colorscheme solarized
 	" somehow we end up with just 8 colors in new vim 8.2,
 	" even though ':echo &t_Co' returns 16
 	set t_Co=16
+	let g:solarized_termtrans = 1
+	colorscheme solarized
 endif
 
 " line numbers / colorcolumn {{{1
